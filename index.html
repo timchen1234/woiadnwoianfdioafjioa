@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glo's Cookies 🍪</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- Particle canvas (background effect) -->
+  <canvas id="cookieCanvas"></canvas>
+
+  <!-- Custom cursor -->
+  <div id="cursor">🍪</div>
+
+
+  <!-- ══════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-logo">Glo's <span>Cookies</span></div>
+    <ul class="nav-links">
+      <li><a href="#flavours">Flavours</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#how">How it Works</a></li>
+      <li><a href="#order" class="nav-cta">Order Now 🍪</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- ══════════════════════════════════════
+       HERO SECTION
+  ══════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid">
+
+      <!-- Left: text -->
+      <div class="hero-text">
+        <span class="hero-tag">✨ Baked Fresh Weekly</span>
+        <h1 class="hero-title">
+          Glo's
+          <span class="wc">Cookies</span>
+        </h1>
+        <p class="hero-sub">
+          Homemade cookies baked fresh every week — big, bold flavours made with
+          love in Scarborough/Markham. Ready for pickup every Saturday.
+        </p>
+        <div class="hero-btns">
+          <a href="#order" class="btn-p">Order Now 🍪</a>
+          <a href="#flavours" class="btn-s">See Flavours</a>
+        </div>
+      </div>
+
+      <!-- Right: animated cookie orbit -->
+      <div class="hero-visual" id="heroVisual">
+        <div class="orbit-ring orbit-ring-2"></div>
+        <div class="orbit-ring orbit-ring-1"></div>
+        <div class="big-cookie" id="bigCookie">🍪</div>
+        <!-- Mini orbiting cookies are added by script.js -->
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       MARQUEE STRIP
+       EDIT: change any of the text below
+  ══════════════════════════════════════ -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span class="marquee-item">🍪 Glo's Cookies</span><span class="marquee-dot">•</span>
+      <span class="marquee-item">Fresh Every Saturday</span><span class="marquee-dot">•</span>
+      <span class="marquee-item">🍫 Red Velvet Cheesecake</span><span class="marquee-dot">•</span>
+      <span class="marquee-item">🍵 Matcha</span><span class="marquee-dot">•</span>
+      <span class="marquee-item">🥜 Biscoff</span><span class="marquee-dot">•</span>
+      <span class="marquee-item">🔥 S'more</span><span class="marquee-dot">•</span>
+      <span class="marquee-item">🖤 Oreo</span><span class="marquee-dot">•</span>
+      <span class="marquee-item">🍪 Chocolate Chip</span><span class="marquee-dot">•</span>
+      <span class="marquee-item">🌟 Dubai Choco Chip</span><span class="marquee-dot">•</span>
+      <span class="marquee-item">Pickup: Scarborough/Markham</span><span class="marquee-dot">•</span>
+      <!-- Duplicate below for seamless looping -->
+      <span class="marquee-item">🍪 Glo's Cookies</span><span class="marquee-dot">•</span>
+      <span class="marquee-item">Fresh Every Saturday</span><span class="marquee-dot">•</span>
+      <span class="marquee-item">🍫 Red Velvet Cheesecake</span><span class="marquee-dot">•</span>
+      <span class="marquee-item">🍵 Matcha</span><span class="marquee-dot">•</span>
+      <span class="marquee-item">🥜 Biscoff</span><span class="marquee-dot">•</span>
+      <span class="marquee-item">🔥 S'more</span><span class="marquee-dot">•</span>
+      <span class="marquee-item">🖤 Oreo</span><span class="marquee-dot">•</span>
+      <span class="marquee-item">🍪 Chocolate Chip</span><span class="marquee-dot">•</span>
+      <span class="marquee-item">🌟 Dubai Choco Chip</span><span class="marquee-dot">•</span>
+      <span class="marquee-item">Pickup: Scarborough/Markham</span><span class="marquee-dot">•</span>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       STATS STRIP
+       EDIT: change data-target numbers
+  ══════════════════════════════════════ -->
+  <div class="stats-strip">
+    <div class="stat">
+      <!-- EDIT: update this number if flavours change -->
+      <span class="stat-num" data-target="7">0</span>
+      <span class="stat-label">Flavours</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" data-target="100" data-suffix="%">0</span>
+      <span class="stat-label">Homemade</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" data-target="1">0</span>
+      <span class="stat-label">Day Fresh</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num" data-prefix="$" data-target="3.50">0</span>
+      <span class="stat-label">From Per Cookie</span>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       FLAVOURS SECTION
+       EDIT: change name, description, emoji
+       for each .flavour-card block below
+  ══════════════════════════════════════ -->
+  <section id="flavours">
+    <div class="section-header reveal">
+      <span class="section-tag">The Lineup</span>
+      <h2 class="section-title">Cookie Flavours 🍪</h2>
+      <p class="section-sub">Seven incredible flavours, all homemade from scratch. Big, thick, and packed with flavour.
+      </p>
+    </div>
+
+    <div class="flavours-grid">
+
+      <!-- Flavour Card: Oreo -->
+      <div class="flavour-card reveal">
+        <span class="flavour-emoji">🖤</span>
+        <div class="flavour-name">Oreo</div>
+        <div class="flavour-desc"></div>
+      </div>
+
+      <!-- Flavour Card: S'more -->
+      <div class="flavour-card reveal">
+        <span class="flavour-emoji">🔥</span>
+        <div class="flavour-name">S'more</div>
+        <div class="flavour-desc"></div>
+      </div>
+
+      <!-- Flavour Card: Biscoff -->
+      <div class="flavour-card reveal">
+        <span class="flavour-emoji">🥜</span>
+        <div class="flavour-name">Biscoff</div>
+        <div class="flavour-desc"></div>
+      </div>
+
+      <!-- Flavour Card: Red Velvet Cheesecake -->
+      <div class="flavour-card reveal">
+        <span class="flavour-emoji">❤️</span>
+        <div class="flavour-name">Red Velvet Cheesecake</div>
+        <div class="flavour-desc"></div>
+      </div>
+
+      <!-- Flavour Card: Matcha -->
+      <div class="flavour-card reveal">
+        <span class="flavour-emoji">🍵</span>
+        <div class="flavour-name">Matcha</div>
+        <div class="flavour-desc"></div>
+      </div>
+
+      <!-- Flavour Card: Chocolate Chip -->
+      <div class="flavour-card reveal">
+        <span class="flavour-emoji">🍫</span>
+        <div class="flavour-name">Chocolate Chip</div>
+        <div class="flavour-desc"></div>
+      </div>
+
+      <!-- Flavour Card: Dubai Choco Chip -->
+      <div class="flavour-card reveal">
+        <span class="flavour-emoji">🌟</span>
+        <div class="flavour-name">Dubai Choco Chip</div>
+        <div class="flavour-desc"> $5 each.</div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       PRICING SECTION
+       EDIT: change quantities and prices here
+       Also update the PRICES object in script.js
+  ══════════════════════════════════════ -->
+  <section id="pricing">
+    <div class="section-header reveal">
+      <span class="section-tag">Pricing</span>
+      <h2 class="section-title">Pick Your Box 📦</h2>
+      <p class="section-sub">Mix and match any flavours you like! The more you order, the better the value.</p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- Price Card: 3 cookies -->
+      <div class="price-card reveal">
+        <span class="price-cookies">3</span>
+        <div class="price-label">Cookies</div>
+        <div class="price-divider"></div>
+        <div class="price-amount">$15</div>
+        <div class="price-each">$5.00 each</div>
+        <button class="price-order-btn" onclick="startOrder(3)">Order This →</button>
+      </div>
+
+      <!-- Price Card: 4 cookies -->
+      <div class="price-card reveal">
+        <span class="price-cookies">4</span>
+        <div class="price-label">Cookies</div>
+        <div class="price-divider"></div>
+        <div class="price-amount">$18</div>
+        <div class="price-each">$4.50 each</div>
+        <button class="price-order-btn" onclick="startOrder(4)">Order This →</button>
+      </div>
+
+      <!-- Price Card: 6 cookies (featured / best value) -->
+      <div class="price-card featured reveal">
+        <div class="price-badge">⭐ Best Value</div>
+        <span class="price-cookies">6</span>
+        <div class="price-label">Cookies</div>
+        <div class="price-divider"></div>
+        <div class="price-amount">$25</div>
+        <div class="price-each">~$4.17 each</div>
+        <button class="price-order-btn" onclick="startOrder(6)">Order This →</button>
+      </div>
+
+      <!-- Price Card: 12 cookies (party box) -->
+      <div class="price-card reveal">
+        <div class="price-badge">🎉 Party Box</div>
+        <span class="price-cookies">12</span>
+        <div class="price-label">Cookies</div>
+        <div class="price-divider"></div>
+        <div class="price-amount">$42</div>
+        <div class="price-each">$3.50 each</div>
+        <button class="price-order-btn" onclick="startOrder(12)">Order This →</button>
+      </div>
+
+      <!-- Price Card: 12+ cookies (custom) -->
+      <div class="price-card reveal">
+        <div class="price-badge">🛒 Bulk Order</div>
+        <span class="price-cookies">12+</span>
+        <div class="price-label">Cookies</div>
+        <div class="price-divider"></div>
+        <div class="price-amount">Custom</div>
+        <div class="price-each">Glo will confirm price</div>
+        <button class="price-order-btn" onclick="startOrder(13)">Order This →</button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       HOW IT WORKS SECTION
+       EDIT: change step titles and descriptions
+  ══════════════════════════════════════ -->
+  <section id="how">
+    <div class="section-header reveal">
+      <span class="section-tag">How to Order</span>
+      <h2 class="section-title">Super Simple ✨</h2>
+      <p class="section-sub">Fresh cookies in 4 easy steps.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <span class="step-icon">📋</span>
+        <div class="step-title">Fill the Form</div>
+        <div class="step-desc">Choose your quantity and mix of flavours using the order form below.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <span class="step-icon">📧</span>
+        <div class="step-title">Get Confirmation</div>
+        <div class="step-desc">You'll receive a confirmation email with payment instructions. Reply ASAP!</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <span class="step-icon">💸</span>
+        <div class="step-title">Send E-Transfer</div>
+        <div class="step-desc">Payment by e-transfer only. Your order is confirmed once payment is received.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <span class="step-icon">🗓️</span>
+        <div class="step-title">Saturday Pickup</div>
+        <div class="step-desc">Pick up your fresh cookies in Scarborough/Markham every Saturday.</div>
+      </div>
+    </div>
+
+    <!-- Allergy Notice -->
+    <div class="allergy-banner reveal">
+      <div class="allergy-icon">⚠️</div>
+      <div class="allergy-text">
+        <h3>Allergy Notice</h3>
+        <p>Cookies may contain or come into contact with wheat, dairy, eggs, and soy. Some may also contain Oreo,
+          Biscoff, matcha, marshmallow, and food colouring. Cross-contamination is possible. Please consider this before
+          ordering if you have severe allergies.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       ORDER FORM SECTION
+       (form logic is handled in script.js)
+  ══════════════════════════════════════ -->
+  <section id="order">
+    <div class="section-header reveal">
+      <span class="section-tag">Place Your Order</span>
+      <h2 class="section-title">Order Fresh Cookies 🍪</h2>
+      <p class="section-sub">Fill out the form — Glo will confirm by email with pickup details and payment info.</p>
+    </div>
+
+    <div class="order-wrapper">
+
+      <!-- Progress Bar -->
+      <div class="progress-bar">
+        <div class="prog-step active-step" id="ps1">
+          <div class="prog-dot active" id="pd1">1</div>
+          <div class="prog-label">Your Info</div>
+        </div>
+        <div class="prog-line" id="pl1"></div>
+        <div class="prog-step" id="ps2">
+          <div class="prog-dot" id="pd2">2</div>
+          <div class="prog-label">Quantity</div>
+        </div>
+        <div class="prog-line" id="pl2"></div>
+        <div class="prog-step" id="ps3">
+          <div class="prog-dot" id="pd3">3</div>
+          <div class="prog-label">Flavours</div>
+        </div>
+        <div class="prog-line" id="pl3"></div>
+        <div class="prog-step" id="ps4">
+          <div class="prog-dot" id="pd4">4</div>
+          <div class="prog-label">Confirm</div>
+        </div>
+      </div>
+
+      <div class="form-card">
+
+        <!-- ── Step 1: Your Info ── -->
+        <div class="step-form active" id="sf1">
+          <div class="form-title">👋 Let's get started!</div>
+          <div class="form-sub">We'll send your order confirmation to your email address.</div>
+
+          <div class="form-group">
+            <label class="form-label">First &amp; Last Name *</label>
+            <input type="text" class="form-input" id="inputName" placeholder="e.g. Jane Smith">
+            <div class="error-msg" id="errName">Please enter your full name.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <input type="email" class="form-input" id="inputEmail" placeholder="e.g. jane@email.com">
+            <div class="error-msg" id="errEmail">Please enter a valid email address.</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              Notes / Special Requests
+              <span style="font-weight:600;color:#9A6040;">(optional)</span>
+            </label>
+            <input type="text" class="form-input" id="inputNotes"
+              placeholder="e.g. Nut allergy, extra crispy, gift box, etc.">
+          </div>
+
+          <div class="form-btns">
+            <button class="btn-next" onclick="goToStep(2)">Next: Choose Quantity →</button>
+          </div>
+        </div>
+
+        <!-- ── Step 2: Quantity ── -->
+        <div class="step-form" id="sf2">
+          <div class="form-title">🍪 How many cookies?</div>
+          <div class="form-sub">Pick your box size. You can mix any flavours you like!</div>
+
+          <div class="qty-grid">
+            <div class="qty-card" onclick="selectQty(this, 3, 15)">
+              <div class="qty-checkmark">✓</div>
+              <span class="qty-num">3</span>
+              <div class="qty-txt">Cookies</div>
+              <div class="qty-price">$15</div>
+              <div class="qty-each">$5.00 each</div>
+            </div>
+            <div class="qty-card" onclick="selectQty(this, 4, 18)">
+              <div class="qty-checkmark">✓</div>
+              <span class="qty-num">4</span>
+              <div class="qty-txt">Cookies</div>
+              <div class="qty-price">$18</div>
+              <div class="qty-each">$4.50 each</div>
+            </div>
+            <div class="qty-card" onclick="selectQty(this, 6, 25)">
+              <div class="qty-badge">⭐ Best Value</div>
+              <div class="qty-checkmark">✓</div>
+              <span class="qty-num">6</span>
+              <div class="qty-txt">Cookies</div>
+              <div class="qty-price">$25</div>
+              <div class="qty-each">~$4.17 each</div>
+            </div>
+            <div class="qty-card" onclick="selectQty(this, 12, 42)">
+              <div class="qty-badge">🎉 Party Box</div>
+              <div class="qty-checkmark">✓</div>
+              <span class="qty-num">12</span>
+              <div class="qty-txt">Cookies</div>
+              <div class="qty-price">$42</div>
+              <div class="qty-each">$3.50 each</div>
+            </div>
+            <div class="qty-card" onclick="selectQty(this, 13, 0)">
+              <div class="qty-badge">🛒 Bulk Order</div>
+              <div class="qty-checkmark">✓</div>
+              <span class="qty-num">12+</span>
+              <div class="qty-txt">Cookies</div>
+              <div class="qty-price">Custom</div>
+              <div class="qty-each">Glo will confirm price</div>
+            </div>
+          </div>
+
+          <!-- Custom quantity input (shows when 12+ is selected) -->
+          <div id="customQtyBox" style="display:none; margin-top:16px;">
+            <label class="form-label">How many cookies do you want?</label>
+            <input type="number" class="form-input" id="customQtyInput" placeholder="e.g. 20" min="13">
+          </div>
+
+          <div class="error-msg" id="errQty" style="margin-top:12px;">Please select a quantity.</div>
+
+          <div class="form-btns">
+            <button class="btn-back" onclick="goToStep(1)">← Back</button>
+            <button class="btn-next" onclick="goToStep(3)">Next: Pick Flavours →</button>
+          </div>
+        </div>
+
+        <!-- ── Step 3: Flavours ── -->
+        <div class="step-form" id="sf3">
+          <div class="form-title">🎨 Choose your flavours!</div>
+          <div class="form-sub" id="flavourSub">Select a flavour for each of your cookies.</div>
+          <div class="flavours-selector" id="flavourSlots"></div>
+          <div class="error-msg" id="errFlavour" style="margin-top:12px;">Please choose a flavour for every cookie.
+          </div>
+          <div class="form-btns">
+            <button class="btn-back" onclick="setStep(2)">← Back</button>
+            <button class="btn-next" onclick="goToStep(4)">Next: Review Order →</button>
+          </div>
+        </div>
+
+        <!-- ── Step 4: Review & Confirm ── -->
+        <div class="step-form" id="sf4">
+          <div class="form-title">✅ Review your order</div>
+          <div class="form-sub">Make sure everything looks right before you submit!</div>
+
+          <!-- Order summary (filled by script.js) -->
+          <div class="summary-box" id="summaryBox"></div>
+
+          <!-- Allergy checkbox -->
+          <div class="policy-box">
+            <div class="policy-title">⚠️ Allergy Notice</div>
+            <div class="policy-text">Cookies may contain wheat, dairy, eggs, soy, Oreo, Biscoff, matcha, marshmallow,
+              and food colouring. Cross-contamination is possible.</div>
+            <label class="check-label">
+              <input type="checkbox" id="chkAllergy">
+              <span>Yes, I understand and acknowledge the allergy notice.</span>
+            </label>
+            <div class="error-msg" id="errAllergy">Please acknowledge the allergy notice.</div>
+          </div>
+
+          <!-- Policy checkbox -->
+          <div class="policy-box">
+            <div class="policy-title">📋 Order Policies</div>
+            <div class="policy-text">Orders confirmed once payment received · No refunds after confirmation · Pickup
+              Saturdays in Scarborough/Markham · Orders not picked up may be forfeited · Payment by e-transfer only.
+            </div>
+            <label class="check-label">
+              <input type="checkbox" id="chkPolicy">
+              <span>Yes, I have read and agree to the order policies.</span>
+            </label>
+            <div class="error-msg" id="errPolicy">Please agree to the order policies.</div>
+          </div>
+
+          <div class="form-btns">
+            <button class="btn-back" onclick="goToStep(3)">← Back</button>
+            <button class="btn-next" onclick="submitOrder()">🍪 Submit My Order</button>
+          </div>
+        </div>
+
+        <!-- ── Step 5: Success ── -->
+        <div class="step-form" id="sf5">
+          <div class="success-state">
+            <span class="success-emoji">🎉</span>
+            <h2>Order Ready to Send!</h2>
+            <p>Your order has been prepared! Click the button below to open your email and send it directly to Glo.
+              She'll reply with payment details and your Saturday pickup info.</p>
+            <a href="#" class="email-link" id="emailLink">📧 Send Order to Glo</a>
+            <br><br>
+            <p class="success-note">📅 Pickup every Saturday &nbsp;·&nbsp; 📍 Scarborough/Markham &nbsp;·&nbsp; 💸
+              E-transfer after confirmation</p>
+            <br>
+            <button class="new-order-btn" onclick="resetOrder()">Place Another Order</button>
+          </div>
+        </div>
+
+      </div><!-- /.form-card -->
+    </div><!-- /.order-wrapper -->
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+       EDIT: change flavours list, info, year
+  ══════════════════════════════════════ -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Glo's <span>Cookies</span></div>
+        <p class="footer-tagline">Homemade cookies baked fresh weekly with love. Big flavours, real ingredients,
+          Saturday pickup in Scarborough/Markham.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Flavours</h4>
+        <ul>
+          <li>Oreo</li>
+          <li>S'more</li>
+          <li>Biscoff</li>
+          <li>Red Velvet Cheesecake</li>
+          <li>Matcha</li>
+          <li>Chocolate Chip</li>
+          <li>Dubai Choco Chip 🌟</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <ul>
+          <li>📍 Scarborough / Markham</li>
+          <li>📅 Pickup: Saturdays</li>
+          <li>💳 Payment: E-Transfer</li>
+          <li>📧 Confirmation by email</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Glo's Cookies · All rights reserved</span>
+      <span>Made with 🍪 and love</span>
+    </div>
+  </footer>
+
+
+  <!-- JavaScript (loaded at the end so the page loads fast) -->
+  <script src="assets/css/script.js"></script>
+
+</body>
+
+</html>
